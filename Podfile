@@ -7,5 +7,6 @@ target 'shopeCard' do
 
   # Pods for shopeCard
   pod 'Alamofire'
+  pod 'SDWebImage'
 
 end

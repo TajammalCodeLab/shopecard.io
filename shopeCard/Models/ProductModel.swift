@@ -1,32 +1,23 @@
-//
-//  ProductModel.swift
-//  shopeCard
-//
-//  Created by SID on 01/10/2024.
-//
+////
+////  ProductModel.swift
+////  shopeCard
+////
+////  Created by SID on 01/10/2024.
+////
 
 import Foundation
 
-
-struct ProductModel {
+struct ProductModel: Codable {
     let id: Int?
     let title: String?
     let price: Double?
     let description: String?
-    let category: Category?
+    let category: String?
     let image: String?
     let rating: Rating?
 }
 
-enum Category: String {
-    case electronics
-    case jewelery
-    case menSClothing
-    case womenSClothing
-}
-
-// MARK: - Rating
-struct Rating {
+struct Rating: Codable {
     let rate: Double?
     let count: Int?
 }
