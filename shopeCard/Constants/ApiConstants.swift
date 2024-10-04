@@ -9,5 +9,5 @@ import Foundation
 
 class ApiConstants{
     
-    static let BASE_URL = "https://fakestoreapi.com/products/"
+    static let BASE_URL = "https://fakestoreapi.com/"
 }

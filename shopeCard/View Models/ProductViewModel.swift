@@ -6,16 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 class ProductViewModel {
     var products: [ProductModel] = []
+    var productDetail: [ProductModel] = []
+    
     var onProductsFetched: (() -> Void)?
     
     func fetchProducts() {
-        NetworkResponse.share.fetchProducts { result in
+        DataManager.shared.getProducts { (result:Result<[ProductModel], ApiError>) in
             
             switch result {
-                
             case .success(let products):
                 self.onProductsFetched?()
                 self.products = products
@@ -25,6 +27,16 @@ class ProductViewModel {
                 print( StringConstants.errorMessage + "\(error)")
                 
             }
+        }
+    }
+    
+    func goToProductDetail(selectedProduct: ProductModel, vc: UIViewController) {
+        
+        
+        if let VC = Identifiers.Storyboard.instantiateViewController(withIdentifier: "productDetail_ID") as? ProductDetailViewController {
+            VC.selectedProduct = selectedProduct
+            VC.modalPresentationStyle = .popover
+            vc.present(VC, animated: true, completion: nil)
         }
     }
 }

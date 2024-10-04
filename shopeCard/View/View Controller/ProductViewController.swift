@@ -20,7 +20,7 @@ class ProductViewController: UIViewController {
     }
     
     private func setupTableView() {
-        productTable.register(UINib(nibName: Identifiers.XiB_NANME, bundle: nil), forCellReuseIdentifier: Identifiers.CELL_ID)
+        productTable.register(UINib(nibName: Identifiers.PRODUCT_XiB_NANME, bundle: nil), forCellReuseIdentifier: Identifiers.PRODUCT_CELL_ID)
     }
     
     
@@ -49,11 +49,11 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Identifiers.CELL_HEIGHT
+        return Identifiers.CELL_HEIGHT_FOR_PRODUCTS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.CELL_ID, for: indexPath) as? ProductTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.PRODUCT_CELL_ID, for: indexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
         
@@ -61,6 +61,13 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: product)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Get the selected product
+        let selectedProduct = productViewModel.products[indexPath.row]
+        productViewModel.goToProductDetail(selectedProduct: selectedProduct, vc: self)
     }
     
 }
