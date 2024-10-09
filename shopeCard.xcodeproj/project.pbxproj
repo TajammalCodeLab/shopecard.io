@@ -8,14 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1FA657E42CADA646000E1E0C /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657E32CADA646000E1E0C /* ApiRouter.swift */; };
-		1FA657E82CADB2E8000E1E0C /* DataManagerProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657E72CADB2E8000E1E0C /* DataManagerProtocal.swift */; };
-		1FA657EA2CADB2F5000E1E0C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657E92CADB2F5000E1E0C /* DataManager.swift */; };
-		1FA657EC2CADB334000E1E0C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657EB2CADB334000E1E0C /* ApiClient.swift */; };
 		1FA657EE2CADB449000E1E0C /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657ED2CADB449000E1E0C /* BaseApi.swift */; };
 		1FA657F02CADB56C000E1E0C /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657EF2CADB56C000E1E0C /* ApiError.swift */; };
 		1FA657F22CADB5C6000E1E0C /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657F12CADB5C6000E1E0C /* JSONHandler.swift */; };
 		1FA657F42CAEE025000E1E0C /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657F32CAEE025000E1E0C /* ProductDetailViewController.swift */; };
-		1FA657F62CAF1219000E1E0C /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657F52CAF1219000E1E0C /* UserDetailsViewController.swift */; };
 		1FA657FB2CAF169A000E1E0C /* UserDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657F92CAF169A000E1E0C /* UserDetailsTableViewCell.swift */; };
 		1FA657FC2CAF169A000E1E0C /* UserDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA657FA2CAF169A000E1E0C /* UserDetailsTableViewCell.xib */; };
 		1FA657FE2CAF398B000E1E0C /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA657FD2CAF398B000E1E0C /* UserViewModel.swift */; };
@@ -36,20 +32,20 @@
 		1FB1CC462CAC88AF0062B76C /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1CC452CAC88AF0062B76C /* ApiConstants.swift */; };
 		1FB1CC802CACCE120062B76C /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1CC7F2CACCE120062B76C /* Identifiers.swift */; };
 		1FB1CC832CACD7BE0062B76C /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1CC822CACD7BE0062B76C /* Extention.swift */; };
+		1FC2D3942CB5C1CE00692ABD /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2D3932CB5C1CE00692ABD /* Box.swift */; };
+		1FC2D3962CB5C2FB00692ABD /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2D3952CB5C2FB00692ABD /* ApiClient.swift */; };
+		1FC2D3992CB5CE8100692ABD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2D3982CB5CE8100692ABD /* DataManager.swift */; };
+		1FC2D39B2CB5CE9000692ABD /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2D39A2CB5CE9000692ABD /* DataManagerProtocol.swift */; };
 		60281CC4C3C2E338F1BBC0BE /* Pods_shopeCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320506C212549943517232CB /* Pods_shopeCard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C257ECD723C5473A7368B2C /* Pods-shopeCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopeCard.debug.xcconfig"; path = "Target Support Files/Pods-shopeCard/Pods-shopeCard.debug.xcconfig"; sourceTree = "<group>"; };
 		1FA657E32CADA646000E1E0C /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
-		1FA657E72CADB2E8000E1E0C /* DataManagerProtocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerProtocal.swift; sourceTree = "<group>"; };
-		1FA657E92CADB2F5000E1E0C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		1FA657EB2CADB334000E1E0C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		1FA657ED2CADB449000E1E0C /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		1FA657EF2CADB56C000E1E0C /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		1FA657F12CADB5C6000E1E0C /* JSONHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
 		1FA657F32CAEE025000E1E0C /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
-		1FA657F52CAF1219000E1E0C /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		1FA657F92CAF169A000E1E0C /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		1FA657FA2CAF169A000E1E0C /* UserDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		1FA657FD2CAF398B000E1E0C /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +68,10 @@
 		1FB1CC452CAC88AF0062B76C /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		1FB1CC7F2CACCE120062B76C /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		1FB1CC822CACD7BE0062B76C /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
+		1FC2D3932CB5C1CE00692ABD /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		1FC2D3952CB5C2FB00692ABD /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		1FC2D3982CB5CE8100692ABD /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1FC2D39A2CB5CE9000692ABD /* DataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
 		320506C212549943517232CB /* Pods_shopeCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shopeCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58DECF94F578CFFA3A393BB0 /* Pods-shopeCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopeCard.release.xcconfig"; path = "Target Support Files/Pods-shopeCard/Pods-shopeCard.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,19 +93,10 @@
 			children = (
 				1FA657EF2CADB56C000E1E0C /* ApiError.swift */,
 				1FA657ED2CADB449000E1E0C /* BaseApi.swift */,
+				1FC2D3952CB5C2FB00692ABD /* ApiClient.swift */,
 				1FA657E32CADA646000E1E0C /* ApiRouter.swift */,
-				1FA657EB2CADB334000E1E0C /* ApiClient.swift */,
 			);
 			path = "Request Handler";
-			sourceTree = "<group>";
-		};
-		1FA657E62CADB218000E1E0C /* Data Manager */ = {
-			isa = PBXGroup;
-			children = (
-				1FA657E72CADB2E8000E1E0C /* DataManagerProtocal.swift */,
-				1FA657E92CADB2F5000E1E0C /* DataManager.swift */,
-			);
-			path = "Data Manager";
 			sourceTree = "<group>";
 		};
 		1FA657F72CAF1609000E1E0C /* ProductDetail */ = {
@@ -203,6 +194,7 @@
 				1FB1CC0A2CAC62690062B76C /* Assets.xcassets */,
 				1FB1CC112CAC62690062B76C /* shopeCard.xcdatamodeld */,
 				1FA657F12CADB5C6000E1E0C /* JSONHandler.swift */,
+				1FC2D3932CB5C1CE00692ABD /* Box.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -238,8 +230,8 @@
 		1FB1CC392CAC82F90062B76C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1FC2D3972CB5CE6200692ABD /* Data Manager */,
 				1FA657E52CADB200000E1E0C /* Request Handler */,
-				1FA657E62CADB218000E1E0C /* Data Manager */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -249,7 +241,6 @@
 			children = (
 				1FB1CC412CAC87260062B76C /* ProductViewController.swift */,
 				1FA657F32CAEE025000E1E0C /* ProductDetailViewController.swift */,
-				1FA657F52CAF1219000E1E0C /* UserDetailsViewController.swift */,
 				1FA657FF2CAF3F65000E1E0C /* MainViewController.swift */,
 			);
 			path = "View Controller";
@@ -261,6 +252,15 @@
 				1FB1CC822CACD7BE0062B76C /* Extention.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		1FC2D3972CB5CE6200692ABD /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1FC2D3982CB5CE8100692ABD /* DataManager.swift */,
+				1FC2D39A2CB5CE9000692ABD /* DataManagerProtocol.swift */,
+			);
+			path = "Data Manager";
 			sourceTree = "<group>";
 		};
 		21F71507102C25586643144C /* Frameworks */ = {
@@ -399,23 +399,23 @@
 			files = (
 				1FB1CC152CAC62690062B76C /* AppDelegate.swift in Sources */,
 				1FA657EE2CADB449000E1E0C /* BaseApi.swift in Sources */,
-				1FA657EA2CADB2F5000E1E0C /* DataManager.swift in Sources */,
 				1FB1CC162CAC62690062B76C /* SceneDelegate.swift in Sources */,
 				1FB1CC422CAC87260062B76C /* ProductViewController.swift in Sources */,
 				1FA657F02CADB56C000E1E0C /* ApiError.swift in Sources */,
-				1FA657EC2CADB334000E1E0C /* ApiClient.swift in Sources */,
+				1FC2D3992CB5CE8100692ABD /* DataManager.swift in Sources */,
 				1FB1CC272CAC6E060062B76C /* UserModel.swift in Sources */,
-				1FA657E82CADB2E8000E1E0C /* DataManagerProtocal.swift in Sources */,
 				1FA657FB2CAF169A000E1E0C /* UserDetailsTableViewCell.swift in Sources */,
 				1FA657FE2CAF398B000E1E0C /* UserViewModel.swift in Sources */,
 				1FB1CC3F2CAC86F50062B76C /* ProductViewModel.swift in Sources */,
 				1FB1CC832CACD7BE0062B76C /* Extention.swift in Sources */,
-				1FA657F62CAF1219000E1E0C /* UserDetailsViewController.swift in Sources */,
 				1FA657E42CADA646000E1E0C /* ApiRouter.swift in Sources */,
+				1FC2D3962CB5C2FB00692ABD /* ApiClient.swift in Sources */,
+				1FC2D39B2CB5CE9000692ABD /* DataManagerProtocol.swift in Sources */,
 				1FA658002CAF3F65000E1E0C /* MainViewController.swift in Sources */,
 				1FB1CC362CAC7BA70062B76C /* StringConstants.swift in Sources */,
 				1FB1CC462CAC88AF0062B76C /* ApiConstants.swift in Sources */,
 				1FA657F22CADB5C6000E1E0C /* JSONHandler.swift in Sources */,
+				1FC2D3942CB5C1CE00692ABD /* Box.swift in Sources */,
 				1FB1CC802CACCE120062B76C /* Identifiers.swift in Sources */,
 				1FB1CC172CAC62690062B76C /* shopeCard.xcdatamodeld in Sources */,
 				1FA657F42CAEE025000E1E0C /* ProductDetailViewController.swift in Sources */,

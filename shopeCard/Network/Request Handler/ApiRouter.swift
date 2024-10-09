@@ -48,7 +48,7 @@ enum ApiRouter: URLRequestConvertible {
             return "products/\(id)"
         case .createProduct:
             return "products"
-        case .updateProduct(let id, let data):
+        case .updateProduct(let id, _):
             return "products/\(id)"
         case .deleteProduct(let id):
             return "products/\(id)"
@@ -59,9 +59,11 @@ enum ApiRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         let baseURL = URL(string: ApiConstants.BASE_URL)!
         let url = baseURL.appendingPathComponent(path)
-        
+        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
+        print(urlRequest.httpMethod)
+        print(urlRequest)
         
         
         // Set parameters

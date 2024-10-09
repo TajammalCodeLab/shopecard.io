@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -22,11 +22,8 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func didTapUserPgae(_ sender: Any) {
-        if let detailVC = Identifiers.Storyboard.instantiateViewController(withIdentifier: Identifiers.USER_PAGE_ID) as? UserDetailsViewController {
-            self.navigationController?.pushViewController(detailVC, animated: true)
-        }
+        
     }
-
-    
-
 }
+
+

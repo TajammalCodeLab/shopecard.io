@@ -7,47 +7,40 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 
-class BaseApi {
+open class BaseApi {
     
-    static func request<T: Codable>(urlConvertible: URLRequestConvertible, completion: @escaping (Result<T, ApiError>) -> Void){
-        /// Perform the network request on a background thread
-        DispatchQueue.global().async {
+    internal static func request<T: Decodable>(route: URLRequestConvertible) -> Observable<T> {
+        return Observable.create { observer in
             
-            AF.request(urlConvertible).validate(statusCode: 200..<300).responseDecodable {(response: DataResponse<T,AFError>) in
-                /// Process the response on the main thread
-                DispatchQueue.main.async {
-                    handleResponse(response, completion: completion)
+            let request = AF.request(route).responseDecodable {
+                (response: DataResponse<T,AFError>) in
+                print("this is a response from the server: \(response)")
+                switch response.result {
+                case .success(let value):
+                    observer.onNext(value)
+                    observer.onCompleted()
+                    print("\(StringConstants.RespnseCodeMSG) \(String(describing: response.response?.statusCode))")
+                    if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                        print("Data: \(utf8Text)")
+                    }
+                    didConvertJSONPretty(data: response.data)
+                case .failure(let error):
+                    print("\(StringConstants.RequestFailedMSG)  \(error.localizedDescription) ")
+                    
+                    if let data = response.data, let serverError = String(data: data, encoding: .utf8) {
+                        observer.onError(error)
+                        didConvertJSONPretty(data: data)
+                    } else {
+                        observer.onError(error)
+                    }
+                    
                 }
             }
-        }
-    }
-    
-    
-    //MARK: -  Helper function to handle the response
-    private static func handleResponse<T: Codable>(_ response: DataResponse<T, AFError>, completion: @escaping (Result<T, ApiError>) -> Void){
-        switch response.result {
-        case .success(let responseData):
-            /// Decode the response data to the specified type
-            didConvertJSONPretty(data: response.data)
-            completion(.success(responseData))
-        case .failure(let error):
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8){
-                print("<<<<<<<<<<<<<<<<< Error Response: \(utf8Text)")
-                print("<<<<<<<<<< Error Message = ", error)
-                do {
-                    let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                    let message = jsonDictionary?["message"] as? String ?? ""
-                    let statusCode = response.response?.statusCode ?? 0
-                    let failureError = ApiError(message: message, statusCode: statusCode)
-                    completion(.failure(failureError))
-                } catch {
-                    let message = error.localizedDescription
-                    let statusCode = response.response?.statusCode ?? 0
-                    let failureError = ApiError(message: message, statusCode: statusCode)
-                    completion(.failure(failureError))
-                }
+            return Disposables.create {
+                request.cancel()
             }
         }
     }

@@ -8,6 +8,8 @@
 import Foundation
 
 class StringConstants {
-    static let errorMessage = "This is the error on fetching products In ProductViewModel:"
+    static let errorMessage = "This is the error on fetching products"
     static let debugMessage = "----------------- DEBUG MESSAGE ------------------"
+    static let RespnseCodeMSG = "----------------- response code ------------------"
+    static let RequestFailedMSG = "----------------- get faild response with description ------------------"
 }

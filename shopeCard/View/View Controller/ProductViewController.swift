@@ -6,17 +6,31 @@
 //
 
 import UIKit
+import Combine
 
 class ProductViewController: UIViewController {
     
     @IBOutlet weak var productTable: UITableView!
-    private var productViewModel = ProductViewModel()
+    
+    
+    private var productVM = ProductViewModel()
+    private var cancellables = Set<AnyCancellable>()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         bindViewModel()
+        productVM.fetchProducts()
+        
     }
     
     private func setupTableView() {
@@ -25,16 +39,28 @@ class ProductViewController: UIViewController {
     
     
     private func bindViewModel() {
-        productViewModel.fetchProducts()
-        productViewModel.onProductsFetched = { [weak self] in
-            self?.reloadTableView()
+        productVM.products.bind { [weak self] products in
+            self?.productTable.reloadData()
+        }
+        
+        productVM.isLoading.bind { [weak self] isLoading in
+            if isLoading {
+                self?.activityIndicator.startAnimating()
+            } else {
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+        
+        productVM.errorMessage.bind { [weak self] errorMessage in
+            if let errorMessage = errorMessage {
+                self?.showAlert(message: errorMessage)
+            }
         }
     }
-    
-    private func reloadTableView() {
-        DispatchQueue.main.async {
-            self.productTable.reloadData()
-        }
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -44,8 +70,8 @@ class ProductViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\(productViewModel.products.count)")
-        return productViewModel.products.count
+        print(productVM.products.value.count)
+        return productVM.products.value.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -57,7 +83,7 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        let product = productViewModel.products[indexPath.row]
+        let product = productVM.products.value[indexPath.row]
         cell.configure(with: product)
         
         return cell
@@ -66,8 +92,8 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Get the selected product
-        let selectedProduct = productViewModel.products[indexPath.row]
-        productViewModel.goToProductDetail(selectedProduct: selectedProduct, vc: self)
+        let selectedProduct = productVM.products.value[indexPath.row]
+        productVM.goToProductDetail(selectedProduct: selectedProduct, vc: self)
     }
     
 }
