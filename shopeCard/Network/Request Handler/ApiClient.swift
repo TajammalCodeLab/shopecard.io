@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 import Alamofire
 
 class ApiClient: BaseApi {
     
-    static func fetchProducts()->Observable<[ProductModel]>{
-        return request(route: ApiRouter.getProducts)
-    }
+    static func fetchProducts() -> AnyPublisher<[ProductModel], Error> {
+            return request(route: ApiRouter.getProducts)
+        }
 }

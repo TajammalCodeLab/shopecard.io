@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 protocol DataManagerProtocol {
-    func fetchProducts () ->Observable<[ProductModel]>
+    func fetchProducts () -> AnyPublisher<[ProductModel], Error>
 }

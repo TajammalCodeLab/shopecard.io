@@ -5,44 +5,40 @@
 //  Created by SID on 02/10/2024.
 //
 
+import Combine
 import Foundation
 import UIKit
-import RxSwift
 
 class ProductViewModel: ObservableObject {
-    
-    let mDataManager:DataManager = DataManager()
-    private let disposeBag = DisposeBag()
-    
-    var products: Box<[ProductModel]> = Box([])
-    // Using Box for loading state
-    var isLoading: Box<Bool> = Box(false)
-    // Using Box for error messages
-    var errorMessage: Box<String?> = Box(nil)
-    
-    
+
+    let mDataManager: DataManager = DataManager()
+    private var cancellables = Set<AnyCancellable>()
+
+    @Published var products: [ProductModel] = []
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String? = nil
+
     func fetchProducts() {
-        isLoading.value = true
-        errorMessage.value = nil
-        
+        isLoading = true
+        errorMessage = nil
+
         mDataManager.fetchProducts()
-            .subscribe(onNext: { [weak self] fetchedProducts in
-                print("++++++1++++++++++ \(fetchedProducts)")
-                self?.products.value = fetchedProducts
-                print("++++++2++++++++++  \(self?.products)")
-                self?.isLoading.value = false
-            }, onError: { [weak self] error in
-                self?.errorMessage.value = error.localizedDescription
-                self?.isLoading.value = false
+            .receive(on: DispatchQueue.global())
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.isLoading = false
+                case .finished:
+                    self?.isLoading = false
+                }
+            }, receiveValue: { [weak self] fetchedProducts in
+                self?.products = fetchedProducts
             })
-            .disposed(by: disposeBag)
+            .store(in: &cancellables)
     }
-    
-    
-    
+
     func goToProductDetail(selectedProduct: ProductModel, vc: UIViewController) {
-        
-        
         if let VC = Identifiers.Storyboard.instantiateViewController(withIdentifier: "productDetail_ID") as? ProductDetailViewController {
             VC.selectedProduct = selectedProduct
             VC.modalPresentationStyle = .popover

@@ -6,12 +6,15 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 class DataManager: DataManagerProtocol {
-    func fetchProducts() -> RxSwift.Observable<[ProductModel]> {
-        return ApiClient.fetchProducts().observe(on: MainScheduler.instance)
-    }
+    
+    func fetchProducts() -> AnyPublisher<[ProductModel], Error> {
+            return ApiClient.fetchProducts()
+                .receive(on: DispatchQueue.main)
+                .eraseToAnyPublisher()
+        }
     
     
 }

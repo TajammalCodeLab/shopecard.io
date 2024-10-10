@@ -62,7 +62,6 @@ enum ApiRouter: URLRequestConvertible {
         print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
-        print(urlRequest.httpMethod)
         print(urlRequest)
         
         

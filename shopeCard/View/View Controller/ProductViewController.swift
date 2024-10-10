@@ -12,7 +12,6 @@ class ProductViewController: UIViewController {
     
     @IBOutlet weak var productTable: UITableView!
     
-    
     private var productVM = ProductViewModel()
     private var cancellables = Set<AnyCancellable>()
     
@@ -22,56 +21,60 @@ class ProductViewController: UIViewController {
         return indicator
     }()
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         bindViewModel()
         productVM.fetchProducts()
-        
     }
     
     private func setupTableView() {
         productTable.register(UINib(nibName: Identifiers.PRODUCT_XiB_NANME, bundle: nil), forCellReuseIdentifier: Identifiers.PRODUCT_CELL_ID)
     }
     
-    
     private func bindViewModel() {
-        productVM.products.bind { [weak self] products in
-            self?.productTable.reloadData()
-        }
-        
-        productVM.isLoading.bind { [weak self] isLoading in
-            if isLoading {
-                self?.activityIndicator.startAnimating()
-            } else {
-                self?.activityIndicator.stopAnimating()
+        productVM.$products
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.productTable.reloadData()
             }
-        }
+            .store(in: &cancellables)
         
-        productVM.errorMessage.bind { [weak self] errorMessage in
-            if let errorMessage = errorMessage {
-                self?.showAlert(message: errorMessage)
+        productVM.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                }
             }
-        }
+            .store(in: &cancellables)
+        
+        productVM.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorMessage in
+                if let errorMessage = errorMessage {
+                    self?.showAlert(message: errorMessage)
+                }
+            }
+            .store(in: &cancellables)
     }
+    
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
-    
-    
 }
+
 
 // MARK: - UITableViewDataSource
 extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(productVM.products.value.count)
-        return productVM.products.value.count
+        print(productVM.products.count)
+        return productVM.products.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -83,17 +86,16 @@ extension ProductViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        let product = productVM.products.value[indexPath.row]
+        let product = productVM.products[indexPath.row]
         cell.configure(with: product)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // Get the selected product
-        let selectedProduct = productVM.products.value[indexPath.row]
+        let selectedProduct = productVM.products[indexPath.row]
         productVM.goToProductDetail(selectedProduct: selectedProduct, vc: self)
     }
-    
 }
+
