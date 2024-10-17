@@ -11,11 +11,11 @@ import Alamofire
 // Define the enum for Store API endpoints
 enum ApiRouter: URLRequestConvertible {
     case getProducts
-    case getUsers
-    case getProductDetails(id: Int)
-    case createProduct(data: ProductModel)
-    case updateProduct(id: Int, data: ProductModel)
-    case deleteProduct(id: Int)
+    case electronics
+    case jewelery
+    case mensCloth
+    case womanCloth
+    case addToCart(productId: Int)
     
     
     
@@ -24,34 +24,35 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         case .getProducts:
             return .get
-        case .getUsers:
+        case .electronics:
             return .get
-        case .getProductDetails:
+        case .jewelery:
             return .get
-        case .createProduct:
-            return .post
-        case .updateProduct:
-            return .put
-        case .deleteProduct:
-            return .delete
+        case .mensCloth:
+            return .get
+        case .womanCloth:
+            return .get
+        case .addToCart:
+            return .get
         }
     }
+    
     
     // Define the API path for each case
     private var path: String {
         switch self {
         case .getProducts:
             return "products"
-        case .getUsers:
-            return "users"
-        case .getProductDetails(let id):
-            return "products/\(id)"
-        case .createProduct:
-            return "products"
-        case .updateProduct(let id, _):
-            return "products/\(id)"
-        case .deleteProduct(let id):
-            return "products/\(id)"
+        case .electronics:
+            return "products/category/electronics"
+        case .addToCart(let productID):
+            return "products/\(productID)"
+        case .jewelery:
+            return "products/category/jewelery"
+        case .mensCloth:
+            return "products/category/men's clothing"
+        case .womanCloth:
+            return "products/category/women's clothing"
         }
     }
     
@@ -87,25 +88,9 @@ enum ApiRouter: URLRequestConvertible {
     // MARK: - Parameters
         private var parameters: Parameters? {
             switch self {
-            case .createProduct(let data):
-                return [
-                    "title": data.title ?? "",
-                    "price": data.price ?? "",
-                    "description": data.description ?? "",
-                    "image": data.image ?? "",
-                    "category": data.category ?? ""
-                ]
-            case .updateProduct(_, let data):
-                return [
-                    "title": data.title ?? "",
-                    "price": data.price ?? "",
-                    "description": data.description ?? "",
-                    "image": data.image ?? "",
-                    "category": data.category ?? ""
-                ]
-            case .deleteProduct:
+            case .getProducts, .electronics, .jewelery, .mensCloth, .womanCloth:
                 return nil
-            case .getProducts, .getProductDetails, .getUsers:
+            case .addToCart:
                 return nil
             }
         }

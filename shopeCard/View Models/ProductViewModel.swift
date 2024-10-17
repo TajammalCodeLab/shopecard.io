@@ -46,3 +46,88 @@ class ProductViewModel: ObservableObject {
         }
     }
 }
+
+// MARK: - Other API calls
+
+extension ProductViewModel {
+    
+    func fetchElectronicProducts() {
+        isLoading = true
+        errorMessage = nil
+
+        mDataManager.fetchElectronicProducts()
+            .receive(on: DispatchQueue.global())
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.isLoading = false
+                case .finished:
+                    self?.isLoading = false
+                }
+            }, receiveValue: { [weak self] fetchedProducts in
+                self?.products = fetchedProducts
+            })
+            .store(in: &cancellables)
+    }
+    
+    func fetchJewelaryProducts() {
+        isLoading = true
+        errorMessage = nil
+
+        mDataManager.fetchJeweleryProducts()
+            .receive(on: DispatchQueue.global())
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.isLoading = false
+                case .finished:
+                    self?.isLoading = false
+                }
+            }, receiveValue: { [weak self] fetchedProducts in
+                self?.products = fetchedProducts
+            })
+            .store(in: &cancellables)
+    }
+    
+    func fetchMensProducts() {
+        isLoading = true
+        errorMessage = nil
+
+        mDataManager.fetchMansClothProducts()
+            .receive(on: DispatchQueue.global())
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.isLoading = false
+                case .finished:
+                    self?.isLoading = false
+                }
+            }, receiveValue: { [weak self] fetchedProducts in
+                self?.products = fetchedProducts
+            })
+            .store(in: &cancellables)
+    }
+    
+    func fetchWomensProducts() {
+        isLoading = true
+        errorMessage = nil
+
+        mDataManager.fetchWomanClothProducts()
+            .receive(on: DispatchQueue.global())
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.isLoading = false
+                case .finished:
+                    self?.isLoading = false
+                }
+            }, receiveValue: { [weak self] fetchedProducts in
+                self?.products = fetchedProducts
+            })
+            .store(in: &cancellables)
+    }
+}

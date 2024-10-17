@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell_ID" rowHeight="387" id="KGk-i7-Jjw" customClass="ProductTableViewCell" customModule="shopeCard" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="337" height="387"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell_ID" rowHeight="586" id="KGk-i7-Jjw" customClass="ProductTableViewCell" customModule="shopeCard" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="337" height="586"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="337" height="387"/>
+                <rect key="frame" x="0.0" y="0.0" width="337" height="586"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hcp-1y-q2o">
-                        <rect key="frame" x="0.0" y="0.0" width="337" height="387"/>
+                        <rect key="frame" x="0.0" y="0.0" width="337" height="586"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_1" translatesAutoresizingMaskIntoConstraints="NO" id="kfd-xk-zPD">
                                 <rect key="frame" x="10" y="10" width="317" height="250"/>
@@ -26,32 +26,33 @@
                                     <constraint firstAttribute="height" constant="250" id="VVJ-oJ-dyZ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PKR: 1000 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ry-ju-Q6j">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="PKR: 1000 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ry-ju-Q6j">
                                 <rect key="frame" x="10" y="260" width="317" height="29"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-E8-2m9">
-                                <rect key="frame" x="10" y="289" width="317" height="19.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFF-E8-2m9">
+                                <rect key="frame" x="10" y="289" width="317" height="247.33333333333337"/>
+                                <string key="text">Warning once only: Detected a case where constraints ambiguously suggest a height of zero for a table view cell's content view. We're considering the collapse unintentional and using standard height instead. Cell: &lt;shopeCard.ProductTableViewCell: 0x103069000; baseClass = UITableViewCell; frame = (0 0; 402 44); autoresize = W; layer = &lt;CALayer: 0x600000291800&gt;&gt;</string>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVT-19-BbM">
-                                <rect key="frame" x="10" y="357.33333333333331" width="64.666666666666671" height="19.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVT-19-BbM">
+                                <rect key="frame" x="10" y="556.33333333333337" width="64.666666666666671" height="19.666666666666629"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvY-2f-FzH">
-                                <rect key="frame" x="79.666666666666671" y="357.33333333333331" width="39.666666666666671" height="19.666666666666686"/>
+                                <rect key="frame" x="74.666666666666671" y="556.33333333333337" width="39.666666666666671" height="19.666666666666629"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZR-T3-zsJ">
-                                <rect key="frame" x="124.33333333333333" y="357.33333333333331" width="36.666666666666671" height="19.666666666666686"/>
+                                <rect key="frame" x="114.33333333333333" y="556.33333333333337" width="36.666666666666671" height="19.666666666666629"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,19 +62,20 @@
                         <constraints>
                             <constraint firstItem="kfd-xk-zPD" firstAttribute="top" secondItem="Hcp-1y-q2o" secondAttribute="top" constant="10" id="3at-Rv-F3c"/>
                             <constraint firstAttribute="trailing" secondItem="kfd-xk-zPD" secondAttribute="trailing" constant="10" id="4Qp-of-6ZE"/>
-                            <constraint firstItem="YvY-2f-FzH" firstAttribute="leading" secondItem="FVT-19-BbM" secondAttribute="trailing" constant="5" id="8tU-Gm-OLz"/>
+                            <constraint firstItem="NZR-T3-zsJ" firstAttribute="centerY" secondItem="YvY-2f-FzH" secondAttribute="centerY" id="68E-BW-tfP"/>
+                            <constraint firstAttribute="trailing" secondItem="WFF-E8-2m9" secondAttribute="trailing" constant="10" id="AfJ-cT-Wpa"/>
+                            <constraint firstItem="FVT-19-BbM" firstAttribute="leading" secondItem="Hcp-1y-q2o" secondAttribute="leading" constant="10" id="EMO-Qe-g2f"/>
                             <constraint firstItem="3Ry-ju-Q6j" firstAttribute="leading" secondItem="Hcp-1y-q2o" secondAttribute="leading" constant="10" id="EeF-wC-kiW"/>
-                            <constraint firstAttribute="bottom" secondItem="FVT-19-BbM" secondAttribute="bottom" constant="10" id="NfK-RY-TO2"/>
+                            <constraint firstItem="NZR-T3-zsJ" firstAttribute="leading" secondItem="YvY-2f-FzH" secondAttribute="trailing" id="FNV-5W-IUH"/>
+                            <constraint firstItem="WFF-E8-2m9" firstAttribute="leading" secondItem="Hcp-1y-q2o" secondAttribute="leading" constant="10" id="FmX-B3-0IT"/>
+                            <constraint firstItem="FVT-19-BbM" firstAttribute="top" secondItem="WFF-E8-2m9" secondAttribute="bottom" constant="20" id="RE7-Hn-owx"/>
                             <constraint firstItem="3Ry-ju-Q6j" firstAttribute="top" secondItem="kfd-xk-zPD" secondAttribute="bottom" id="SKp-7M-n5K"/>
-                            <constraint firstAttribute="bottom" secondItem="YvY-2f-FzH" secondAttribute="bottom" constant="10" id="Ud4-Ic-FlV"/>
-                            <constraint firstItem="WFF-E8-2m9" firstAttribute="top" secondItem="3Ry-ju-Q6j" secondAttribute="bottom" id="WRf-Tf-pCl"/>
-                            <constraint firstAttribute="bottom" secondItem="NZR-T3-zsJ" secondAttribute="bottom" constant="10" id="ZMo-bW-klv"/>
+                            <constraint firstItem="YvY-2f-FzH" firstAttribute="leading" secondItem="FVT-19-BbM" secondAttribute="trailing" id="YwW-DM-UV4"/>
+                            <constraint firstItem="YvY-2f-FzH" firstAttribute="centerY" secondItem="FVT-19-BbM" secondAttribute="centerY" id="ave-Ce-7rr"/>
                             <constraint firstAttribute="trailing" secondItem="3Ry-ju-Q6j" secondAttribute="trailing" constant="10" id="fOM-6r-TfS"/>
-                            <constraint firstItem="NZR-T3-zsJ" firstAttribute="leading" secondItem="YvY-2f-FzH" secondAttribute="trailing" constant="5" id="jiY-sg-zSX"/>
-                            <constraint firstItem="WFF-E8-2m9" firstAttribute="leading" secondItem="Hcp-1y-q2o" secondAttribute="leading" constant="10" id="oCB-iC-d3g"/>
-                            <constraint firstItem="FVT-19-BbM" firstAttribute="leading" secondItem="Hcp-1y-q2o" secondAttribute="leading" constant="10" id="rk3-lw-RtT"/>
                             <constraint firstItem="kfd-xk-zPD" firstAttribute="leading" secondItem="Hcp-1y-q2o" secondAttribute="leading" constant="10" id="tKY-Ov-sAl"/>
-                            <constraint firstAttribute="trailing" secondItem="WFF-E8-2m9" secondAttribute="trailing" constant="10" id="ySl-aU-zFO"/>
+                            <constraint firstItem="WFF-E8-2m9" firstAttribute="top" secondItem="3Ry-ju-Q6j" secondAttribute="bottom" id="wcg-GA-GV5"/>
+                            <constraint firstAttribute="bottom" secondItem="FVT-19-BbM" secondAttribute="bottom" constant="10" id="zus-aP-R1u"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -95,7 +97,7 @@
                 <outlet property="productPrice" destination="3Ry-ju-Q6j" id="vLf-wx-wwD"/>
                 <outlet property="productRating" destination="YvY-2f-FzH" id="r2z-AQ-hiO"/>
             </connections>
-            <point key="canvasLocation" x="167.17557251908397" y="75.704225352112687"/>
+            <point key="canvasLocation" x="167.17557251908397" y="145.77464788732394"/>
         </tableViewCell>
     </objects>
     <resources>

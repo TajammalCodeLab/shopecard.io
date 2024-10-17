@@ -10,4 +10,5 @@ target 'shopeCard' do
   pod 'SDWebImage'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'PromiseKit'
 end

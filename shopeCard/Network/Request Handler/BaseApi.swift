@@ -8,35 +8,43 @@
 import Foundation
 import Alamofire
 import Combine
+import PromiseKit
+
 
 open class BaseApi {
     
-    internal static func request<T: Decodable>(route: URLRequestConvertible) -> AnyPublisher<T, Error> {
-        return Future<T, Error> { promise in
-            let request = AF.request(route).responseDecodable { (response: DataResponse<T, AFError>) in
-
-                switch response.result {
-                case .success(let value):
+    static func request<T: Decodable>(route: Alamofire.URLRequestConvertible) -> AnyPublisher<T, Error> {
+            return Future { promise in
+                firstly {
+                    self.performRequest(route: route)
+                }.done { (value: T, data: Data?) in
                     promise(.success(value))
-                    if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    if let data = data, let utf8Text = String(data: data, encoding: .utf8) {
                         print("Data: \(utf8Text)")
                     }
-                    didConvertJSONPretty(data: response.data)
-                    
-                case .failure(let error):
-                    
-                    if let data = response.data, let serverError = String(data: data, encoding: .utf8) {
-                        promise(.failure(error))
-                        didConvertJSONPretty(data: data)
-                    } else {
-                        promise(.failure(error))
+                    self.didConvertJSONPretty(data: data)
+                }.catch { error in
+                    promise(.failure(error))
+                }
+            }
+            .eraseToAnyPublisher()
+        }
+
+    private static func performRequest<T: Decodable>(route: Alamofire.URLRequestConvertible) -> Promise<(T, Data?)> {
+            return Promise { seal in
+                AF.request(route).responseDecodable { (response: DataResponse<T, AFError>) in
+                    switch response.result {
+                    case .success(let value):
+                        seal.fulfill((value, response.data))
+                    case .failure(let error):
+                        if let data = response.data {
+                            self.didConvertJSONPretty(data: data)
+                        }
+                        seal.reject(error)
                     }
                 }
             }
         }
-        .eraseToAnyPublisher()
-    }
-
     
     
     private static func didConvertJSONPretty(data: Data?) {

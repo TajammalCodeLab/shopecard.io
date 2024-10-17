@@ -25,9 +25,12 @@ class ProductDetailViewController: UIViewController {
         updateUI()
     }
     
-    @IBAction func addToCartBtn(_ sender: Any) {
+    
+    @IBAction func addToCart(_ sender: Any) {
         
     }
+    
+    
     func updateUI() {
         containerView.addRadiusAndShadow(12)
         subcontainerView.addRadiusAndShadow(5)
